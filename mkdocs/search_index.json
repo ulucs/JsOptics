@@ -1,0 +1,144 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "JsOptics\n\n\nA simple JS library for Linear Optics, ray and gaussian beam transformations.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#jsoptics", 
+            "text": "A simple JS library for Linear Optics, ray and gaussian beam transformations.", 
+            "title": "JsOptics"
+        }, 
+        {
+            "location": "/lights/", 
+            "text": "Light Sources\n\n\nLight Ray\n\n\nvar r = new jsOptics.Ray(r,theta);\n\n\n\nA single light ray entering the optical system with height \nr\n and angle \ntheta\n (in radians).\n\n\nGaussian Beam\n\n\nvar g = new jsOptics.GaussBeam(real,im);\n\n\n\nA Gaussian Beam entering the optical system with real part \nreal\n and imaginary part \nim\n.", 
+            "title": "Sources"
+        }, 
+        {
+            "location": "/lights/#light-sources", 
+            "text": "", 
+            "title": "Light Sources"
+        }, 
+        {
+            "location": "/lights/#light-ray", 
+            "text": "var r = new jsOptics.Ray(r,theta);  A single light ray entering the optical system with height  r  and angle  theta  (in radians).", 
+            "title": "Light Ray"
+        }, 
+        {
+            "location": "/lights/#gaussian-beam", 
+            "text": "var g = new jsOptics.GaussBeam(real,im);  A Gaussian Beam entering the optical system with real part  real  and imaginary part  im .", 
+            "title": "Gaussian Beam"
+        }, 
+        {
+            "location": "/components/", 
+            "text": "Component\n\n\nConstructor\n\n\nvar comp = new jsOptics.Component(A,B,C,D);\n\n\n\nGeneral usage component wiwth linear matrix components \nA\n, \nB\n, \nC\n and \nD\n.\n\n\nShortcuts\n\n\nDistance\n\n\nvar dist = new jsOptics.Distance(d);\n\n\n\nShortcut for a component of only a distance \nd\n.\n\n\nLens\n\n\nvar lens = new jsOptics.Lens(f);\n\n\n\nShortcut for a thin lens of focal distance \nf\n.\n\n\nIndice\n\n\nvar in = new jsOptics.Indice(n);\nvar in2 = new jsOptics.Indice(n1,n2);\n\n\n\nShortcut for indice change from air to \nn\n, or from \nn1\n to \nn2\n.", 
+            "title": "Components"
+        }, 
+        {
+            "location": "/components/#component", 
+            "text": "", 
+            "title": "Component"
+        }, 
+        {
+            "location": "/components/#constructor", 
+            "text": "var comp = new jsOptics.Component(A,B,C,D);  General usage component wiwth linear matrix components  A ,  B ,  C  and  D .", 
+            "title": "Constructor"
+        }, 
+        {
+            "location": "/components/#shortcuts", 
+            "text": "", 
+            "title": "Shortcuts"
+        }, 
+        {
+            "location": "/components/#distance", 
+            "text": "var dist = new jsOptics.Distance(d);  Shortcut for a component of only a distance  d .", 
+            "title": "Distance"
+        }, 
+        {
+            "location": "/components/#lens", 
+            "text": "var lens = new jsOptics.Lens(f);  Shortcut for a thin lens of focal distance  f .", 
+            "title": "Lens"
+        }, 
+        {
+            "location": "/components/#indice", 
+            "text": "var in = new jsOptics.Indice(n);\nvar in2 = new jsOptics.Indice(n1,n2);  Shortcut for indice change from air to  n , or from  n1  to  n2 .", 
+            "title": "Indice"
+        }, 
+        {
+            "location": "/system/", 
+            "text": "Optical System\n\n\nConstructor\n\n\nvar sys = new jsOptics.System(A,B,C,D);\nvar syi = new jsOptics.System();\n\n\n\nGeneral usage constructor for optical systems with matrix representation \nA\n, \nB\n, \nC\n and \nD\n. Returns an identity optical system when called with no parameters.\n\n\nAttributes\n\n\nSystem.components\n\n\nvar comps = sys.components;\n\n\n\nReturns an array of the components added to the optical system, assuming an empty system was initialized and components were added using the \naddComponent\n or \naddComponentS\n methods.\n\n\nMethods\n\n\nSystem.addComponent(component)\n\n\nsys = sys.addComponent(component);\n\n\n\nAdds the requested component to the end of the system, and returns the resulting system.\n\n\nSystem.addComponentS(component)\n\n\nsys = sys.addComponentS(component);\n\n\n\nAdds the requested component to the beginning of the system, and returns the resulting system.\n\n\nSystem.imageLocation()\n\n\nvar d = sys.imageLocation();\n\n\n\nIf the optical system is capable of forming images, returns the image distance \nd\n from the end of the optical system. Returns \nfalse\n otherwise.\n\n\nSystem.completeImage()\n\n\nsys = sys.completeImage();\n\n\n\nIf the optical system is capable of forming images, adds a distance component extending to the position of the image. A shorthand for \nsys.addComponent(new Distance(sys.imageLocation()));\n. Returns \nfalse\n otherwise.\n\n\nSystem.determinant()\n\n\nvar det = sys.determinant();\n\n\n\nReturns the determinant (the ratio of the ending indice to the beginning indice) of the Optical System.\n\n\nSystem.simplify()\n\n\nvar syss = sys.simplify();\n\n\n\nFor any optical system, returns another system consisting of a distance, an indice change, a thin lens and another distance which is equivalent to the previous system.\n\n\nSystem.rayTransform(ray)\n\n\nvar r2 = sys.rayTransform(r1);\n\n\n\nConstructs the outgoing ray from an incoming ray to the system.\n\n\nSystem.beamTransform(gaussBeam)\n\n\nvar q2 = sys.beamTransform(q1);\n\n\n\nConstructs the outgoing Gaussian beam from an incoming one.\n\n\nSystem.eigenBeam()\n\n\nvar q = sys.eigenBeam();\n\n\n\nFor any optical system, constructs a Gaussian beam whose output is the same as its input. Used mainly for resonators. If there isn't such beam, returns \nfalse\n instead.", 
+            "title": "System"
+        }, 
+        {
+            "location": "/system/#optical-system", 
+            "text": "", 
+            "title": "Optical System"
+        }, 
+        {
+            "location": "/system/#constructor", 
+            "text": "var sys = new jsOptics.System(A,B,C,D);\nvar syi = new jsOptics.System();  General usage constructor for optical systems with matrix representation  A ,  B ,  C  and  D . Returns an identity optical system when called with no parameters.", 
+            "title": "Constructor"
+        }, 
+        {
+            "location": "/system/#attributes", 
+            "text": "", 
+            "title": "Attributes"
+        }, 
+        {
+            "location": "/system/#systemcomponents", 
+            "text": "var comps = sys.components;  Returns an array of the components added to the optical system, assuming an empty system was initialized and components were added using the  addComponent  or  addComponentS  methods.", 
+            "title": "System.components"
+        }, 
+        {
+            "location": "/system/#methods", 
+            "text": "", 
+            "title": "Methods"
+        }, 
+        {
+            "location": "/system/#systemaddcomponentcomponent", 
+            "text": "sys = sys.addComponent(component);  Adds the requested component to the end of the system, and returns the resulting system.", 
+            "title": "System.addComponent(component)"
+        }, 
+        {
+            "location": "/system/#systemaddcomponentscomponent", 
+            "text": "sys = sys.addComponentS(component);  Adds the requested component to the beginning of the system, and returns the resulting system.", 
+            "title": "System.addComponentS(component)"
+        }, 
+        {
+            "location": "/system/#systemimagelocation", 
+            "text": "var d = sys.imageLocation();  If the optical system is capable of forming images, returns the image distance  d  from the end of the optical system. Returns  false  otherwise.", 
+            "title": "System.imageLocation()"
+        }, 
+        {
+            "location": "/system/#systemcompleteimage", 
+            "text": "sys = sys.completeImage();  If the optical system is capable of forming images, adds a distance component extending to the position of the image. A shorthand for  sys.addComponent(new Distance(sys.imageLocation())); . Returns  false  otherwise.", 
+            "title": "System.completeImage()"
+        }, 
+        {
+            "location": "/system/#systemdeterminant", 
+            "text": "var det = sys.determinant();  Returns the determinant (the ratio of the ending indice to the beginning indice) of the Optical System.", 
+            "title": "System.determinant()"
+        }, 
+        {
+            "location": "/system/#systemsimplify", 
+            "text": "var syss = sys.simplify();  For any optical system, returns another system consisting of a distance, an indice change, a thin lens and another distance which is equivalent to the previous system.", 
+            "title": "System.simplify()"
+        }, 
+        {
+            "location": "/system/#systemraytransformray", 
+            "text": "var r2 = sys.rayTransform(r1);  Constructs the outgoing ray from an incoming ray to the system.", 
+            "title": "System.rayTransform(ray)"
+        }, 
+        {
+            "location": "/system/#systembeamtransformgaussbeam", 
+            "text": "var q2 = sys.beamTransform(q1);  Constructs the outgoing Gaussian beam from an incoming one.", 
+            "title": "System.beamTransform(gaussBeam)"
+        }, 
+        {
+            "location": "/system/#systemeigenbeam", 
+            "text": "var q = sys.eigenBeam();  For any optical system, constructs a Gaussian beam whose output is the same as its input. Used mainly for resonators. If there isn't such beam, returns  false  instead.", 
+            "title": "System.eigenBeam()"
+        }
+    ]
+}
